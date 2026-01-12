@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asit Palai | SAP S/4HANA FICO Consultant</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #0f172a;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: #020617;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    }
+
+    .navbar .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar a {
+      color: #e5e7eb;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .navbar a:hover {
+      color: #38bdf8;
+    }
+
+    .resume-btn {
+      padding: 6px 14px;
+      border: 1px solid #38bdf8;
+      border-radius: 6px;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(circle at top, #020617, #0f172a);
+    }
+
+    .profile-wrapper {
+      position: relative;
+      margin-bottom: 25px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .profile-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56,189,248,0.45), transparent 70%);
+      filter: blur(18px);
+      animation: glow 3s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+
+    .profile-pic {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #38bdf8;
+      background: #020617;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+    }
+
+    .hero h2 {
+      font-size: 1.5rem;
+      color: #38bdf8;
+      margin-top: 10px;
+    }
+
+    .hero p {
+      margin-top: 10px;
+      color: #cbd5f5;
+    }
+
+    .btn {
+      margin-top: 25px;
+      padding: 12px 26px;
+      background: #38bdf8;
+      color: #020617;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(56,189,248,0.4);
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      padding: 90px 10%;
+    }
+
+    .gray {
+      background: #020617;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #38bdf8;
+    }
+
+    /* ===== SKILLS ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .skills-grid span {
+      background: #020617;
+      padding: 14px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid #1e293b;
+      transition: transform 0.3s, border 0.3s;
+    }
+
+    .skills-grid span:hover {
+      transform: translateY(-5px);
+      border-color: #38bdf8;
+    }
+
+    /* ===== PROJECTS ===== */
+    .project {
+      background: #020617;
+      padding: 22px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      border: 1px solid #1e293b;
+    }
+
+    .project h3 {
+      color: #e5e7eb;
+    }
+
+    .project ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #020617;
+      color: #94a3b8;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s forwards;
+    }
+
+    .delay { animation-delay: 0.3s; }
+    .delay-2 { animation-delay: 0.6s; }
+    .delay-3 { animation-delay: 0.9s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes glow {
+      from { opacity: 0.6; }
+      to { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.9s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media(max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .hero h1 { font-size: 2.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">Asit Palai</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="./Resume.pdf" class="resume-btn" download>Resume</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="profile-wrapper fade-in">
+      <img src="./ASIT_PALAI_SAP_FICO_4_Exp.jpg" alt="Asit Palai" class="profile-pic" />
+    </div>
+    <h1 class="fade-in delay">Asit Palai</h1>
+    <h2 class="fade-in delay-2">SAP S/4HANA FICO Consultant</h2>
+    <p class="fade-in delay-3">4+ Years Experience | Implementation & Support</p>
+    <a href="#contact" class="btn fade-in delay-3">Contact Me</a>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="section reveal">
+    <h2>About Me</h2>
+    <p>
+      SAP S/4HANA FICO Consultant with 4.2+ years of experience across implementation,
+      support, and integration projects. Strong expertise in FI–MM, FI–SD, Asset Accounting,
+      GST, E-Invoicing, and data migration.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section gray reveal">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <span>SAP S/4HANA FI</span>
+      <span>CO – CCA & PCA</span>
+      <span>FI–MM & FI–SD</span>
+      <span>Asset Accounting</span>
+      <span>GST / TDS / TCS</span>
+      <span>E-Invoicing</span>
+      <span>IDOC & WRICEF</span>
+      <span>LTMC</span>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section reveal">
+    <h2>Projects</h2>
+
+    <div class="project">
+      <h3>Centrica PLC</h3>
+      <p><strong>Oct 2021 – Jan 2024 | S/4HANA</strong></p>
+      <ul>
+        <li>GL, AP, AR, Asset Accounting</li>
+        <li>FI–MM & FI–SD integration</li>
+        <li>UAT & user training</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <h3>Elior India Food Services</h3>
+      <p><strong>Mar 2024 – Aug 2024 | Support</strong></p>
+      <ul>
+        <li>SLA-based incident handling</li>
+        <li>Month-end & year-end closing</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <h3>Altigreen Propulsions Labs</h3>
+      <p><strong>Sep 2024 – Aug 2025 | Implementation</strong></p>
+      <ul>
+        <li>New GL & document splitting</li>
+        <li>Bank & Asset Accounting</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <h3>TATA Electronics</h3>
+      <p><strong>Aug 2025 – Present | HANA–Tableau</strong></p>
+      <ul>
+        <li>Functional specs & UAT</li>
+        <li>Data validation</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section gray reveal">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:asitpalai.mail@gmail.com">asitpalai.mail@gmail.com</a></p>
+    <p>Phone: +91 6371253684</p>
+  </section>
+
+  <footer>
+    © 2026 Asit Palai
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    function revealOnScroll() {
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const elementVisible = 120;
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add('active');
+        }
+      }
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
+
+</body>
+</html>
